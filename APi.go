@@ -19,7 +19,7 @@ func NewConnection(channel string) *Message {
 
 func (m *Message) Write(p []byte) (n int, err error) {
 
-	m.Text = string(p)
+	m.Text = bytes.NewBuffer(p).String()
 	marshMellow, err := json.Marshal(m)
 	if err != nil {
 		fmt.Println(err)
