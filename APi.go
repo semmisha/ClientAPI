@@ -17,7 +17,7 @@ func NewConnection(channel string) *Message {
 	return &Message{Channel: channel}
 }
 
-func (m Message) Write(p []byte) (n int, err error) {
+func (m *Message) Write(p []byte) (n int, err error) {
 
 	m.Text = string(p)
 	marshMellow, err := json.Marshal(m)
