@@ -37,7 +37,7 @@ func (m Message) Write(p []byte) (n int, err error) {
 	fmt.Println(resp.StatusCode)
 	resdpBody, _ := io.ReadAll(resp.Body)
 
-	fmt.Println(string(resdpBody))
+	fmt.Println(string(resdpBody), "")
 
 	return 0, err
 }
