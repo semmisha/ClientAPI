@@ -35,7 +35,11 @@ func (m *Message) Write(p []byte) (n int, err error) {
 	}
 
 	fmt.Println(resp.StatusCode)
-	resdpBody, _ := io.ReadAll(resp.Body)
+	resdpBody, err1 := io.ReadAll(resp.Body)
+	if err1 != nil {
+		fmt.Println(err1)
+
+	}
 
 	fmt.Println(string(resdpBody), "")
 
