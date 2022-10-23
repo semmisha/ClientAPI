@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 )
 
@@ -35,18 +34,16 @@ func (m *Message) Write(p []byte) (n int, err error) {
 	resp, err := client.Post(m.URL, "application/json ", bytes.NewBuffer(marshMellow))
 	if err != nil {
 
-		fmt.Println(err)
+		fmt.Println("Post request error: ", err)
 
 	}
 
-	fmt.Println(resp.StatusCode)
-	resdpBody, err1 := io.ReadAll(resp.Body)
-	if err1 != nil {
-		fmt.Println(err1)
-
-	}
-
-	fmt.Println(string(resdpBody), "")
+	fmt.Println("Reply status code: ", resp.StatusCode)
+	//_, err1 := io.ReadAll(resp.Body)
+	//if err1 != nil {
+	//	fmt.Println("Read body error: ",err1)
+	//
+	//}
 
 	return 0, err
 
