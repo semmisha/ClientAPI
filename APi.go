@@ -35,7 +35,7 @@ func (m *Message) Write(p []byte) (n int, err error) {
 	resp, err := client.Post(m.URL, "application/json ", bytes.NewBuffer(marshMellow))
 	if err != nil {
 
-		fmt.Println("error")
+		fmt.Println(err)
 
 	}
 
