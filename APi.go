@@ -7,20 +7,20 @@ import (
 	"net/http"
 )
 
-type Message struct {
+type TLGClient struct {
 	URL     string `json:"url"`
 	Channel string `json:"channel"`
 	Text    string `json:"text"`
 }
 
-func NewConnection(channel string, url string) *Message {
-	return &Message{
+func NewConnection(channel string, url string) *TLGClient {
+	return &TLGClient{
 		Channel: channel,
 		URL:     url,
 	}
 }
 
-func (m *Message) Write(p []byte) (n int, err error) {
+func (m *TLGClient) Write(p []byte) (n int, err error) {
 
 	m.Text = bytes.NewBuffer(p).String()
 
@@ -39,11 +39,6 @@ func (m *Message) Write(p []byte) (n int, err error) {
 	}
 
 	fmt.Println("Reply status code: ", resp.StatusCode)
-	//_, err1 := io.ReadAll(resp.Body)
-	//if err1 != nil {
-	//	fmt.Println("Read body error: ",err1)
-	//
-	//}
 
 	return 0, err
 
